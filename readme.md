@@ -13,10 +13,9 @@ You can basically use every parameters described [here](https://developers.googl
 ```html
 <div id="my-embed" class="custom-youtube-embed" style="width:640px;height:360px;" 
   data-youtube-id="PSX2iTnN4hg"
-  data-autoplay="1",
+  data-autoplay="1"
   data-controls="2"
-  data-autohide="0"
-  ></div>
+  data-autohide="0"></div>
 ```
 
 
