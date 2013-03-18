@@ -52,7 +52,7 @@
           rel           : 0,
           showinfo      : 0,
           theme         : 'light',
-          color         : 'white', 
+          color         : 'white',
           controls      : 0,
           autoplay      : 0
         }, $this.el.data() );
@@ -76,9 +76,10 @@
 
 
     ,stateChange: function( state ){
-      this.el.data('video-state', state).trigger('state-change', state);
+      this.el.data('video-state', state).trigger('player-state-change', state);
     }//stateChange
   };
+
 
   $.fn.ntzYoutubeEmbed = function() {
     return this.each(function(){
@@ -86,7 +87,6 @@
       obj.init( this );
     });
   };
-
 })( jQuery, document );
 
-function onYouTubeIframeAPIReady() { jQuery('.custom-youtube-embed').ntzYoutubeEmbed(); };
+function onYouTubeIframeAPIReady() { jQuery('.custom-youtube-embed').ntzYoutubeEmbed(); }
