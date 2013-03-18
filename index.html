@@ -24,7 +24,7 @@
   </head>
   <body>
     <div class="demo">
-      <div class="custom-youtube-embed" style="width:960px;height:450px;margin:0 auto 20px;"
+      <div style="width:960px;height:450px;margin:0 auto 20px;"
       data-youtube-id="2f1Ny74_ou0"></div>
       <p style="text-align:center">
         <button class="pause">∥</button>
@@ -39,7 +39,7 @@
     <script src="ntzYoutubeEmbed.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-      var player = $('.custom-youtube-embed');
+      var player = $('div[data-youtube-id]');
 
       $('button').on('click', function(e){
         e.preventDefault();

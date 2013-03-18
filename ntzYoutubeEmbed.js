@@ -90,4 +90,4 @@
   };
 })( jQuery, document );
 
-function onYouTubeIframeAPIReady() { jQuery('.custom-youtube-embed').ntzYoutubeEmbed(); }
+function onYouTubeIframeAPIReady() { jQuery('div[data-youtube-id]').ntzYoutubeEmbed(); }
