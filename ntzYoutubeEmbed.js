@@ -20,8 +20,6 @@
         'id': this.movieContainerID
       }).appendTo( $this.el );
 
-      this.createPlayer();
-
       this.el.on('player-pause', function(){ $this.player.pauseVideo(); });
       this.el.on('player-stop', function(){ $this.player.seekTo(0); $this.player.stopVideo(); });
       this.el.on('player-play', function(){ $this.player.playVideo(); });
@@ -38,6 +36,13 @@
           player.playVideo();
         }
       });
+
+      var ytTimer = window.setInterval(function(){
+        if( typeof YT != 'undefined' ){
+          window.clearInterval( ytTimer );
+          $this.createPlayer();
+        }
+      }, 50);
     } // init
 
 
@@ -90,4 +95,6 @@
   };
 })( jQuery, document );
 
-function onYouTubeIframeAPIReady() { jQuery('div[data-youtube-id]').ntzYoutubeEmbed(); }
+jQuery(document).ready(function($){
+  $('div[data-youtube-id]').ntzYoutubeEmbed(); // optional
+});
