@@ -14,12 +14,25 @@
       var $this = this;
       $this.el = $( el );
 
+      var ytTimer = window.setInterval(function(){
+        if( typeof YT == 'object' && typeof YT.Player == 'function' ){
+          window.clearInterval( ytTimer );
+          $this.YTApiReady();
+        }
+      }, 10);
+    } // init
+
+
+    ,YTApiReady: function(){
+      var $this = this;
       this.movieContainerID = 'video-' + Math.round( Math.random() * 1000000 );
 
       $('<div class="youtube-iframe" />').attr({
         'id': this.movieContainerID
       }).appendTo( $this.el );
 
+      $this.createPlayer();
+      
       this.el.on('player-pause', function(){ $this.player.pauseVideo(); });
       this.el.on('player-stop', function(){ $this.player.seekTo(0); $this.player.stopVideo(); });
       this.el.on('player-play', function(){ $this.player.playVideo(); });
@@ -36,14 +49,7 @@
           player.playVideo();
         }
       });
-
-      var ytTimer = window.setInterval(function(){
-        if( typeof YT != 'undefined' ){
-          window.clearInterval( ytTimer );
-          $this.createPlayer();
-        }
-      }, 50);
-    } // init
+    }//YTApiReady
 
 
     ,createPlayer: function(){
