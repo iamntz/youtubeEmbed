@@ -66,8 +66,18 @@
           theme         : 'light',
           color         : 'white',
           controls      : 0,
-          autoplay      : 0
+          autoplay      : 0,
+          poster        : ""
         }, $this.el.data() );
+
+      if( playerVars.poster ){
+        var poster = $('<img class="player-poster" />').attr('src', playerVars.poster );
+        poster.appendTo( $this.el );
+        poster.on('click', function(){
+          $(this).remove();
+          $this.el.trigger('player-play');
+        })
+      }
 
       this.player = new YT.Player( this.movieContainerID, {
         height    : '100%',
