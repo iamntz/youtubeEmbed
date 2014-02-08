@@ -73,8 +73,9 @@
       if( playerVars.poster ){
         var poster = $('<img class="player-poster" />').attr('src', playerVars.poster );
         poster.appendTo( $this.el );
+        $this.el.addClass('player-has-poster');
         poster.on('click', function(){
-          $(this).remove();
+          $(this).addClass('is-playing');
           $this.el.trigger('player-play');
         });
       }
