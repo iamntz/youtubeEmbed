@@ -76,7 +76,7 @@
         poster.on('click', function(){
           $(this).remove();
           $this.el.trigger('player-play');
-        })
+        });
       }
 
       this.player = new YT.Player( this.movieContainerID, {
