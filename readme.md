@@ -1,12 +1,16 @@
 ### What is this?
 A very light jQuery plugin for easily embed youtube videos. The plugin will auto embed youtube videos for all `data-youtube-id="*"` elements.
 
-#### [Demo](http://iamntz.github.com/youtubeEmbed/)
+#### [Demo](http://codepen.io/iamntz/pen/Faycu)
 
 #### Very Basic Usage:
 
 ```html
 <div id="my-embed" style="width:640px;height:360px;" data-youtube-id="PSX2iTnN4hg"></div>
+```
+
+```javascript
+$('div[data-youtube-id]').ntzYoutubeEmbed();
 ```
 
 #### Parameters
