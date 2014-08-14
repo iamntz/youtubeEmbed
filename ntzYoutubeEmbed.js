@@ -111,7 +111,3 @@
     });
   };
 })( jQuery, document );
-
-jQuery(document).ready(function($){
-  $('div[data-youtube-id]').ntzYoutubeEmbed(); // optional
-});
