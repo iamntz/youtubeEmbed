@@ -1,77 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <title>ntzYoutubeEmbed Demo</title>
+    <title>Youtube Embed Sample</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <style type="text/css" media="screen">
-      body {
-        font:400 18px/1.5 Arial, Helvetica, Verdana;
-        text-align:center
+      .embedWrapper {
+        /* it needs another wrapper because otherwise the padding will be relative to 100% width, not to max-width */
+        /* if the video needs to fit full width of it's parent, this element is useless. */
+        max-width:50%;
       }
-      button {
-        margin:0 20px;
-        font-size:22px;
+
+      .embed {
+        position:relative;
+        height:0;
+        overflow:hidden;
+        /* if the video have a different ratio than 16:9 you may want to fiddle with this a bit */
+        padding-top:56%;
       }
-      button.toggle-state {
-        background:#222;
-        color:#fff;
-        border:0;
-      }
-      .toggle-state,
-      .toggle-state span {
-        display:none;
-      }
-      a {
-        text-decoration:none;
-        font-weight:700;
-        color:#6e99c9;
+
+      .embed div {
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background:#c00;
       }
     </style>
   </head>
   <body>
-    <div class="demo">
-      <h2><a href="https://github.com/iamntz/youtubeEmbed">ntzYoutubeEmbed Source</a></h2>
-      <div style="width:960px;height:450px;margin:0 auto 20px;"
-      data-youtube-id="2f1Ny74_ou0"></div>
-      <p>
-        <button class="pause">∥</button>
-        <button class="stop">◼</button>
-        <button class="play">▶</button>
 
-        <button class="toggle-state"><span class="play">▶</span><span class="pause">∥</span></button>
-      </p>
+    <div class="embedWrapper">
+      <div class="embed">
+        <div data-youtube-id="PSX2iTnN4hg"></div>
+      </div>
+    </div>
 
-    </div><!--/wrap-->
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, suntin culpa qui officia deserunt mollit anim id est .</p>
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://raw.github.com/iamntz/youtubeEmbed/master/ntzYoutubeEmbed.js" type="text/javascript"></script>
+    <div>
+      <div class="embed">
+        <div data-youtube-id="__j5Z_WcVgE"></div>
+      </div>
+
+      <button class="pause">pause</button>
+      <button class="stop">stop</button>
+      <button class="play">play</button>
+    </div>
+
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//rawgit.com/iamntz/youtubeEmbed/master/ntzYoutubeEmbed.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-      var player = $('div[data-youtube-id]');
+      $('div[data-youtube-id]').ntzYoutubeEmbed();
 
       $('button').on('click', function(e){
         e.preventDefault();
+        var player = $(this).parent().find('div[data-youtube-id]');
+        $('div[data-youtube-id]').trigger('player-pause');
+
         player.trigger('player-' + this.className );
       });
 
-      player.on('player-state-change', function(e, player){
-        var state = $('.toggle-state');
-        $('span', state).hide();
-        switch( player.data ){
-          case 1:
-            $('.pause', state).add(state).show();
-          break;
-          case 2:
-            $('.play', state).add(state).show();
-          break;
-          default:
-            state.hide();
-          break;
-        }
-      })
     </script>
-
   </body>
 </html>
